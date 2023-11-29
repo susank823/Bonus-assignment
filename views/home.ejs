@@ -1,0 +1,53 @@
+<%- include('base/header') -%>
+<div class="container">
+<div class="row my-5">
+  <% if(flash.workout_msg){ %>
+    <div class="col-md-6 mx-auto my-2">
+      <div class="alert alert-info alert-dismissible fade show" role="alert"><%= flash.workout_msg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  <% } %>
+  <% if(loggedIn){ %>
+    <div class="col-12 d-flex justify-content-end mb-3">
+        <a href="/add" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
+    </div>
+  <% } %>
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Calories</th>
+                <th scope="col">Date</th>
+              <% if(loggedIn){ %>
+                <th scope="col">Action</th>
+              <% } %>
+              </tr>
+            </thead>
+            <tbody>
+              <% data.forEach((workout, index) => { %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= workout.title %></td>
+                  <td><%= workout.description %></td>
+                  <td><%= workout.duration %></td>
+                  <td><%= workout.calories %></td>
+                  <td><%= workout.date %></td>
+                <% if(loggedIn){ %>
+                  <td>
+                      <a href="/edit/<%= workout._id %>"><i class="fas fa-edit text-info"></i></a>
+                      <a href="/remove/<%= workout._id %>"><i class="fas fa-trash-alt text-danger"></i></a>
+                  </td>
+                <% } %>
+                </tr>
+              <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<%- include('base/footer') -%>

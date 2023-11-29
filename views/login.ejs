@@ -1,0 +1,27 @@
+<%- include('base/header') -%>
+<div class="container">
+<div class="row mt-5">
+<div class="col-md-6 mx-auto">
+<% if(flash.auth_msg){ %>
+<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert"><%= flash.auth_msg %>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+    <div class="card card-body">
+        <h4 class="text-center">Login</h4>
+        <form action="/login" method="POST">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" required>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" required>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+<%- include('base/footer') -%>

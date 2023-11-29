@@ -1,0 +1,43 @@
+<%- include('base/header') -%>
+<div class="container">
+<div class="row mt-5">
+<% if(flash.workout_msg){ %>
+    <div class="col-12">
+    <div class="row">
+        <div class="col-md-6 mx-auto my-2">
+            <div class="alert alert-info alert-dismissible fade show" role="alert"><%= flash.workout_msg %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    </div>
+<% } %>
+<div class="col-md-6 mx-auto">
+    <div class="card card-body">
+        <h4 class="text-center">Edit</h4>
+        <form action="/edit" method="POST">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" id="title" value="<%= workout.title %>" required>
+            <br>
+            <label for="description">Description</label>
+            <input type="text" name="description" class="form-control" id="description" value="<%= workout.description %>" required>
+            <br>
+            <label for="duration">Duration</label>
+            <input type="text" name="duration" class="form-control" id="duration" value="<%= workout.duration %>" required>
+            <br>
+            <label for="calories">Calories</label>
+            <input type="text" name="calories" class="form-control" id="calories" value="<%= workout.calories %>" required>
+            <br>
+            <label for="date">Date</label>
+            <input type="date" name="date" class="form-control" id="date" value="<%= workout.date %>" required>
+            <br>
+            <input type="hidden" name="id" value="<%= workout._id %>">
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>        
+    </div>
+</div>
+</div>
+</div>
+<%- include('base/footer') -%>
