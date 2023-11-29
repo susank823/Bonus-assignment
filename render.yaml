@@ -1,7 +1,6 @@
-# render.yaml
-
 services:
   - name: web
+    type: web
     env:
       - key: NODE_ENV
         value: production
